@@ -44,7 +44,7 @@ const About = () => {
         <FaUserAstronaut className="dev-icon" />
         <h3>Developed By</h3>
         <p>
-          <b>Veeresh S</b> — passionate about using technology to save lives through innovation and
+          <b>Yashwanth H N</b> — passionate about using technology to save lives through innovation and
           community-driven solutions.
         </p>
       </div>
