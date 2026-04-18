@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Contact.css";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import axios from "axios";
 import API_BASE_URL from "../config/api";
 

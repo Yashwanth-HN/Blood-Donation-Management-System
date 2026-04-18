@@ -137,17 +137,6 @@ const FindDonors = () => {
     mapRef.current = mapInstance;
   };
 
-  // ✅ MIDPOINT FOR DISTANCE LABEL
-  const getMidPoint = () => {
-    if (!userLocation || !selectedDonor) return null;
-
-    const [ulat, ulng] = userLocation;
-    const dlat = Number(selectedDonor.latitude);
-    const dlng = Number(selectedDonor.longitude);
-
-    return [(ulat + dlat) / 2, (ulng + dlng) / 2];
-  };
-
   return (
     <div className="finddonors-container">
       <h1 className="finddonors-title">Search Blood Donors</h1>
