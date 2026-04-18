@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/AdminMessages.css";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 const AdminMessages = () => {
   const [messages, setMessages] = useState([]);
@@ -8,7 +9,7 @@ const AdminMessages = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contacts");
+      const res = await axios.get(`${API_BASE_URL}/api/contacts`);
       setMessages(res.data);
       setLoading(false);
     } catch (err) {
@@ -25,7 +26,7 @@ const AdminMessages = () => {
     if (!window.confirm("Are you sure you want to delete this message?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/contacts/${id}`);
       alert("Message deleted successfully!");
       fetchMessages();
     } catch (err) {

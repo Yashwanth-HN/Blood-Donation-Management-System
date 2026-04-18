@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
+import API_BASE_URL from "../config/api";
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -24,7 +25,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/donors/login",
+        `${API_BASE_URL}/api/donors/login`,
         formData
       );
 

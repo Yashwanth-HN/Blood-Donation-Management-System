@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/AdminDashboard.css";
 import "../styles/AdminDonors.css";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 const AdminDonors = () => {
   const [donors, setDonors] = useState([]);
@@ -9,7 +10,7 @@ const AdminDonors = () => {
 
   const fetchDonors = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/donors");
+      const res = await axios.get(`${API_BASE_URL}/api/donors`);
       setDonors(res.data);
       setLoading(false);
     } catch (err) {
@@ -26,7 +27,7 @@ const AdminDonors = () => {
     if (!window.confirm("Are you sure you want to delete this donor?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/donors/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/donors/${id}`);
       alert("Donor deleted successfully!");
       fetchDonors();
     } catch (err) {
@@ -49,7 +50,7 @@ const AdminDonors = () => {
     if (newCity === null) return;
 
     try {
-      await axios.put(`http://localhost:5000/api/donors/${donor._id}`, {
+      await axios.put(`${API_BASE_URL}/api/donors/${donor._id}`, {
         fullName: newFullName,
         email: newEmail,
         phone: newPhone,

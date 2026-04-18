@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import axios from "axios";
 import "../styles/FindDonors.css";
+import API_BASE_URL from "../config/api";
 
 // Donor icon
 const bloodIcon = new L.Icon({
@@ -60,7 +61,7 @@ const FindDonors = () => {
     setDistanceKm(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/donors/search", {
+      const res = await axios.post(`${API_BASE_URL}/api/donors/search`, {
         bloodGroup: filters.bloodGroup || "",
         city: filters.city || "",
         district: filters.district || "",

@@ -7,6 +7,7 @@ import "../styles/Register.css";
 import { FaTint } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config/api";
 
 // Leaflet
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
@@ -82,7 +83,7 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/donors/register", formData);
+      const res = await axios.post(`${API_BASE_URL}/api/donors/register`, formData);
 
       if (!res.data || !res.data.donorId) {
         alert("❌ Registration failed! Try again.");

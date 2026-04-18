@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/DonorDashboard.css";
+import API_BASE_URL from "../config/api";
 
 const DonorDashboard = () => {
   const { donorId: routeId } = useParams();
@@ -26,7 +27,7 @@ const DonorDashboard = () => {
 
     const fetchDonor = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/donors/${donorId}`);
+        const res = await axios.get(`${API_BASE_URL}/api/donors/${donorId}`);
         if (res.data && res.data.success && res.data.donor) {
           setDonor(res.data.donor);
         } else {

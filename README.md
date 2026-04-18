@@ -113,6 +113,44 @@ See `backend/routes/` and `backend/controllers/` for complete API behavior and a
 
 ---
 
+**Deployment (Render + Vercel)**
+
+This repo is prepared for split deployment:
+- Backend on Render using `render.yaml`
+- Frontend on Vercel using `frontend/vercel.json`
+
+1. Deploy backend to Render
+
+- In Render, create a **Web Service** from this GitHub repo.
+- Render will detect `render.yaml` automatically.
+- Ensure these environment variables are set in Render:
+	- `MONGO_URI` (MongoDB Atlas connection string)
+	- `JWT_SECRET` (long random secret)
+	- `FRONTEND_URL` (your Vercel app URL, e.g. `https://your-app.vercel.app`)
+- After deploy, note your backend URL, e.g. `https://bdms-backend.onrender.com`.
+
+2. Deploy frontend to Vercel
+
+- Import the same GitHub repo into Vercel.
+- Set **Root Directory** to `frontend`.
+- Build command: `npm run build`
+- Output directory: `build`
+- Add environment variable in Vercel:
+	- `REACT_APP_API_URL=https://your-render-backend.onrender.com`
+- Deploy and note your Vercel URL.
+
+3. Final CORS check
+
+- Update Render `FRONTEND_URL` to your final Vercel URL if it changed.
+- Redeploy backend once after updating environment variables.
+
+4. Optional sample env files
+
+- Backend sample: `backend/.env.example`
+- Frontend sample: `frontend/.env.example`
+
+---
+
 **Troubleshooting**
 - If backend can't connect to Mongo, check `MONGO_URI` and that `mongod` is running or the Docker container is up (`docker ps`).
 - If ports are already in use, change `PORT` in `.env` or stop the conflicting process.

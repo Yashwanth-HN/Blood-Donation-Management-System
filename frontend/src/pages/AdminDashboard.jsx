@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/AdminDashboard.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -18,10 +19,10 @@ const AdminDashboard = () => {
 
   const fetchCounts = async () => {
     try {
-      const messagesRes = await axios.get("http://localhost:5000/api/contacts");
+      const messagesRes = await axios.get(`${API_BASE_URL}/api/contacts`);
       setMessageCount(messagesRes.data.length);
 
-      const donorsRes = await axios.get("http://localhost:5000/api/donors");
+      const donorsRes = await axios.get(`${API_BASE_URL}/api/donors`);
       setDonorCount(donorsRes.data.length);
     } catch (err) {
       console.error("Failed to fetch counts:", err);
